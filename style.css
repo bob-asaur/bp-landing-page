@@ -8,10 +8,9 @@ body {
 }
 
 header h1 {
-    /* Bolded and increased font size (approx 2em larger than before) */
-    font-size: 3.5rem; 
-    font-weight: 800;
-    letter-spacing: -0.02rem; /* Tighter spacing for bold look */
+    font-size: 2.5rem; 
+    font-weight: 350;
+    letter-spacing: 0.02rem;
     margin-bottom: 0.5rem;
     text-transform: lowercase;
 }
@@ -30,47 +29,42 @@ nav a {
 
 /* The Photo Wall Container */
 .gallery {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px; /* Space between photos */
+    display: grid;
+    /* Keeps 3 columns, but ensures they don't get too massive */
+    grid-template-columns: repeat(3, minmax(0, 1000px)); 
+    gap: 20px;
     width: 100%;
+    margin: 4rem 0;
+    align-items: start; 
 }
 
 .gallery img {
-    /* No fixed height = No cropping */
+    /* Hard limit of 1000px wide */
+    max-width: 1000px;
+    /* Fills the grid column up to that 1000px limit */
+    width: 100%; 
+    /* This is the magic line that maintains your aspect ratio */
     height: auto; 
-    
-    /* This allows up to 3 wide photos per row on desktop */
-    /* We set a base width of 30%, allowing flex-grow to fill the rest */
-    flex: 1 1 30%; 
-    
-    /* Ensures the portrait photos don't get too massive */
-    max-width: 100%;
-    
-    /* Keeps aspect ratio perfect */
-    object-fit: contain; 
     
     display: block;
     opacity: 0;
     animation: fadeIn 1.5s ease forwards;
+    transition: transform 0.3s ease;
 }
 
 @keyframes fadeIn {
     to { opacity: 1; }
 }
 
-footer {
-    margin-top: 6rem;
-    font-size: 0.8rem;
-    color: #999;
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
-/* Mobile adjustments */
-@media (max-width: 768px) {
-    .gallery img {
-        flex: 1 1 45%; /* 2 per row on tablets */
-    }
-    header h1 {
-        font-size: 2.5rem;
+@media (max-width: 600px) {
+    .gallery {
+        grid-template-columns: 1fr;
     }
 }

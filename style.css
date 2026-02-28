@@ -47,14 +47,19 @@ nav a {
     transition: transform 0.3s ease;
 }
 
-/* Portrait: aspect-ratio drives row height via span 2.
-   Row height = (portrait_height - 5px gap) / 2.
-   Landscape images fill one row track via align-self: stretch (default),
-   so: 2 × landscape_height + 5px = portrait_height. */
 .gallery img.portrait {
     aspect-ratio: 2/3;
     grid-row: span 2;
     align-self: start;
+}
+
+/* height: 100% resolves to the grid row track height without contributing to
+   its sizing, so rows are driven purely by the portrait's aspect-ratio.
+   Result: landscape_height = (portrait_height - 5px) / 2, satisfying
+   2 × landscape_height + 5px gap = portrait_height. */
+.gallery img.landscape {
+    height: 100%;
+    min-height: 0;
 }
 
 .gallery img:hover {

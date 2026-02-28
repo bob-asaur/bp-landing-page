@@ -32,7 +32,7 @@ nav a {
     /* Define the number of columns based on screen size */
     column-count: 5;
     
-    column-gap: 3%; 
+    column-gap: 1%; 
     
     width: 100%;
     margin: 4rem auto;

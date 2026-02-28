@@ -30,7 +30,7 @@ nav a {
 /* The Photo Wall Container */
 .gallery {
     /* Define the number of columns based on screen size */
-    column-count: 6;
+    column-count: 5;
     /* The horizontal space between columns */
     column-gap: 15px; 
     width: 100%;

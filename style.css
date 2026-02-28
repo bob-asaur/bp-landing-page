@@ -31,8 +31,9 @@ nav a {
 .gallery {
     /* Define the number of columns based on screen size */
     column-count: 5;
-    /* The horizontal space between columns */
-    column-gap: 15px; 
+    
+    column-gap: 3%; 
+    
     width: 100%;
     margin: 4rem auto;
 }
@@ -42,10 +43,9 @@ nav a {
     width: 100%; 
     height: auto;
     
-    /* The vertical space between photos in the same column */
-    margin-bottom: 15px; 
+    margin-bottom: 16.667%; 
     
-    /* CRITICAL: Prevents a single photo from being split across two columns */
+    /* Prevents a single photo from being split across two columns */
     break-inside: avoid;
     display: block;
     

@@ -29,29 +29,39 @@ nav a {
 
 /* The Photo Wall Container */
 .gallery {
-    /* Define the number of columns based on screen size */
+    
+    --gap: 1vw; 
+    
     column-count: 5;
-    
-    column-gap: 1%; 
-    
+    column-gap: var(--gap); 
     width: 100%;
     margin: 4rem auto;
 }
 
 .gallery img {
-    /* Ensures the image fills the width of its column */
     width: 100%; 
     height: auto;
     
-    margin-bottom: 16.667%; 
+    margin-bottom: var(--gap); 
     
-    /* Prevents a single photo from being split across two columns */
     break-inside: avoid;
     display: block;
+    
+    object-fit: cover; 
     
     opacity: 0;
     animation: fadeIn 1.5s ease forwards;
     transition: transform 0.3s ease;
+}
+
+/* Force portrait photos to a perfect 2:3 ratio */
+.gallery img.portrait {
+    aspect-ratio: 2 / 3;
+}
+
+/* Force landscape photos to a 4:3 ratio (slightly taller than they originally were) */
+.gallery img.landscape {
+    aspect-ratio: 4 / 3; 
 }
 
 /* Subtle hover effect */
@@ -78,14 +88,14 @@ nav a {
 
 /* --- Lightbox Styles --- */
 .lightbox {
-    display: none; /* Hidden by default */
+    display: none; 
     position: fixed;
-    z-index: 1000; /* Ensures it sits on top of everything */
+    z-index: 1000; 
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.9); /* 90% opaque black */
+    background-color: rgba(0, 0, 0, 0.9); 
     
     /* Flexbox to center the image perfectly */
     align-items: center; 
@@ -96,8 +106,8 @@ nav a {
     /* Prevents the image from touching the edges of the screen */
     max-width: 90%;
     max-height: 90vh;
-    object-fit: contain; /* Keeps aspect ratio perfectly intact */
-    box-shadow: 0 4px 20px rgba(0,0,0,0.5); /* Subtle shadow for depth */
+    object-fit: contain; 
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5); 
 }
 
 .close-btn {
